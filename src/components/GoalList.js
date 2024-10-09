@@ -15,7 +15,7 @@ export default class GoalList extends Component {
   componentDidMount() {
     eventEmitter.emit("message", "true");
     axios
-      .get("http://localhost:5000/exercises")
+      .get("https://fitness-app-backend-6t94.onrender.com/exercises")
       .then(res => {
         this.setState({ exercises: res.data });
       })
@@ -25,7 +25,7 @@ export default class GoalList extends Component {
   deleteExercise(id) {
     console.log(id);
     axios
-      .delete(`http://localhost:5000/exercises/${id}`)
+      .delete(`https://fitness-app-backend-6t94.onrender.com/exercises/${id}`)
       .then(res => alert(res.data));
     this.setState({
       exercises: this.state.exercises.filter(el => el._id !== id)

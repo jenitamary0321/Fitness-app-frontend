@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import { Select, Typography, Divider, FormControl,InputLabel, MenuItem, TextField, Button } from '@mui/material'; // Correcting Material UI imports
 import axios from 'axios';
@@ -21,7 +20,7 @@ export default class GoalSetting extends Component {
 
   componentDidMount() {
     eventEmitter.emit("message", "true");
-    axios.get("http://localhost:5000/users")
+    axios.get("https://fitness-app-backend-6t94.onrender.com/users")
       .then(res => {
         if (res.data.length > 0) {
           this.setState({
@@ -48,13 +47,13 @@ export default class GoalSetting extends Component {
       date: this.state.date
     };
 
-    axios.post("http://localhost:5000/exercises/add", exercise)
+    axios.post("https://fitness-app-backend-6t94.onrender.com/exercises/add", exercise)
       .then(res => console.log(res.data))
-      .catch(err => console.log(err));
-    //  eventEmitter.emit("message", "false");
-    window.location = "/exercise"; // Redirect after submission
+        .catch(err => console.log(err));
+      alert('Exercise Added successfully!!');
+     window.location = "/exercise"; // Redirect after submission
   }
-
+  
   render() {
     return (
       <div>
@@ -115,8 +114,8 @@ export default class GoalSetting extends Component {
             >
               Add Excercise
             </Button>
-            
-      </div>
+           
+             </div>
     );
   }
 }

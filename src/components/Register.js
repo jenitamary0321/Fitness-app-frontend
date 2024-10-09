@@ -25,6 +25,8 @@ class Register extends Component {
       alert("User name field is empty!");
       return;
     }
+   
+
     if(this.state.name.length < 5 || this.state.name.length > 8){
       alert("name length mismatch!! required 5 to 8 letters");
       return;
@@ -40,14 +42,16 @@ class Register extends Component {
     if(this.state.password !== this.state.confirmpass){
       alert("Password input mismatch!");
       return;
+      
     }
+    alert('Registered Successfully!!!');
     const user = {
       name: this.state.name,
       username: this.state.username,
       password: this.state.password
     };
     axios
-      .post("http://localhost:5000/users/add", user)
+      .post("https://fitness-app-backend-6t94.onrender.com/users/add", user)
       .then(res => alert(res.data));
     this.setState({
       name:"",

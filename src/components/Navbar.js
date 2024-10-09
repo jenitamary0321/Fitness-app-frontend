@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { AppBar, Toolbar, Typography, Button, Container } from '@mui/material';
 import { Link } from 'react-router-dom';
 import ImageCarousel from './ImageCarousel';
@@ -9,20 +9,13 @@ const Navbar = () => {
 
   const visibilityChange = (msg) => {
     console.log("event emitted: "+msg);
-    //alert("Event is emitted: "+msg);
+    
     const status = msg.toLowerCase() === 'true';
-    setIsVisible(!status); // Toggle based on login status
-    //this.forceUpdate();
+    setIsVisible(!status); 
   };
 
   eventEmitter.on('message', visibilityChange);
-  // useEffect(() => {
-  //   eventEmitter.on('message', visibilityChange);
-  //   return () => {
-  //     eventEmitter.off('message', visibilityChange); // Clean up on unmount
-  //   };
-  // }, []);
-
+  
   return (
     <div>
       <AppBar position="static" sx={{ backgroundColor: 'black', width: '100%' }}>

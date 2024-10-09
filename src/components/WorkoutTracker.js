@@ -11,11 +11,9 @@ class WorkoutTracker extends Component {
       message: '',
     };
   }
+    static contextType = AuthContext;
 
-  // Set contextType to use AuthContext in class component
-  static contextType = AuthContext;
-
-  // Yup validation schema for workout form
+   
   workoutSchema = Yup.object().shape({
     type: Yup.string().required('Workout type is required'),
     duration: Yup.number()
@@ -31,7 +29,7 @@ class WorkoutTracker extends Component {
   handleWorkoutTracking = async (values, { resetForm }) => {
     const { user } = this.context; // Access user from AuthContext
     try {
-      await axios.post('http://localhost:5000/workouts', values, {
+      await axios.post('https://fitness-app-backend-6t94.onrender.com/workouts', values, {
         headers: { Authorization: `Bearer ${user.token}` },
       });
       this.setState({ message: 'Workout logged successfully' });

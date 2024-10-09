@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-
 const images = [
     'https://i.etsystatic.com/36512667/r/il/4ee179/4304450910/il_1588xN.4304450910_pkdt.jpg',
   'https://as2.ftcdn.net/v2/jpg/01/79/81/77/1000_F_179817756_QzTocli57q9G6a1Oe7kJtoMS5dNMU8cl.jpg',
@@ -18,17 +17,23 @@ const ImageCarousel = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 2000); // Change image every 2000ms (2 seconds)
+    }, 2000);  
 
-    return () => clearInterval(interval); // Cleanup interval on component unmount
+    return () => clearInterval(interval);  
   }, []);
 
   return (
-    <div>
+    <div style={{ display: 'flex', justifyContent: 'right', alignItems: 'center', height: '400px' }}>
       <img 
         src={images[currentImageIndex]} 
         alt="Carousel" 
-        style={{ width: '50%', height: '20%' }} // Adjust as needed
+        style={{
+          width: '100%',  
+          maxWidth: '500px',  
+          height: '100%',  
+          maxHeight: '300px', 
+          objectFit: 'cover',  
+        }}
       />
     </div>
   );

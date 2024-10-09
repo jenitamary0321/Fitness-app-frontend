@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
 import axios from 'axios';
 import AuthContext from '../context/AuthContext';
 
@@ -12,8 +11,7 @@ class NutritionTracker extends Component {
     };
   }
 
-  // Set AuthContext in class component
-  static contextType = AuthContext;
+    static contextType = AuthContext;
 
   onSubmit = e => {
     e.preventDefault();
@@ -24,7 +22,7 @@ class NutritionTracker extends Component {
       calories: this.state.calories
     };
     axios
-      .post("http://localhost:5000/nutrition/add", user)
+      .post("https://fitness-app-backend-6t94.onrender.com/nutrition/add", user)
       .then(res => {
         console.log("Status is : " + res.data.status);
         if(res.data.status === "true"){
